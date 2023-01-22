@@ -7,7 +7,7 @@ Here are some things to consider about using the Amazon EBS CSI driver.
 •	Alpha features of the Amazon EBS CSI driver aren't supported on Amazon EKS clusters.
 
 
-CREATE A IAM POLICY:-
+CREATE A IAM POLICY:- POLICY NAME:-Amazon_EBS_CSI_Driver_POLICY
 
 {
   "Version": "2012-10-17",
@@ -32,3 +32,20 @@ CREATE A IAM POLICY:-
     }
   ]
 }
+
+# Get Worker node IAM Role ARN
+kubectl -n kube-system describe configmap aws-auth
+
+CREATE A IAM ROLE: ROLE NAME:eks-node-group-iam-role
+& ADD THE POLICY
+
+
+
+# Deploy EBS CSI Driver
+kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=master"
+
+# Verify ebs-csi pods running
+kubectl get pods -n kube-system
+
+
+
