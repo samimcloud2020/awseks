@@ -1,0 +1,6 @@
+controlplane $ kubectl port-forward svc/wordpress 32328:80
+Forwarding from 127.0.0.1:32328 -> 80
+Forwarding from [::1]:32328 -> 80
+
+
+kubectl port-forward svc/[service-name] -n [namespace] [external-port]:[internal-port]
