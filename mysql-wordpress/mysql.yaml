@@ -42,9 +42,9 @@ labels:
   app: wordpress
 spec:
   selector:
-  matchLabels:
-    app: wordpress
-    tier: mysql
+    matchLabels:
+      app: wordpress
+      tier: mysql
   strategy:
     type: Recreate
   template:
