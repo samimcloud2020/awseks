@@ -1,0 +1,34 @@
+Amazon EBS CSI driver
+PDFRSS
+The Amazon Elastic Block Store (Amazon EBS) Container Storage Interface (CSI) driver allows Amazon Elastic Kubernetes Service (Amazon EKS) clusters to manage the lifecycle of Amazon EBS volumes for persistent volumes.
+Here are some things to consider about using the Amazon EBS CSI driver.
+•	The Amazon EBS CSI plugin requires IAM permissions to make calls to AWS APIs on your behalf. For more information, see Creating the Amazon EBS CSI driver IAM role for service accounts.
+•	You can run the Amazon EBS CSI controller on Fargate, but you can't mount volumes to Fargate pods.
+•	Alpha features of the Amazon EBS CSI driver aren't supported on Amazon EKS clusters.
+
+
+CREATE A IAM POLICY:-
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:AttachVolume",
+        "ec2:CreateSnapshot",
+        "ec2:CreateTags",
+        "ec2:CreateVolume",
+        "ec2:DeleteSnapshot",
+        "ec2:DeleteTags",
+        "ec2:DeleteVolume",
+        "ec2:DescribeInstances",
+        "ec2:DescribeSnapshots",
+        "ec2:DescribeTags",
+        "ec2:DescribeVolumes",
+        "ec2:DetachVolume"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
