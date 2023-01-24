@@ -32,13 +32,13 @@ spec:
               value: "usermgmt"            
             - name: DB_USERNAME
                 secretKeyRef:
-                  name: mysql-db-user
-                  key: user                # k create secret generic mysql-db-user --from-literal=mysql-db-user=dbadmin        
+                  name: mysql-db-password
+                  key: db-user                # k create secret generic mysql-db-password --from-literal=db-user=dbadmin   --from-literal=db-password=password123      
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mysql-db-password
-                  key: db-password      # k create secret generic mysql-db-password --from-literal=mysql-db-password=password123     
+                  key: db-password      # k create secret generic mysql-db-password --from-literal=db-password=password123    --from-literal=db-user=dbadmin  
           livenessProbe:
             exec:
               command: 
