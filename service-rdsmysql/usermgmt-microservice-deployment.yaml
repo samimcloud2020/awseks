@@ -31,12 +31,14 @@ spec:
             - name: DB_NAME
               value: "usermgmt"            
             - name: DB_USERNAME
-              value: "dbadmin"        # RDS DB Username is dbadmin in RDS MYSQL (here also we make secret for better practice)    
+                secretKeyRef:
+                  name: mysql-db-user
+                  key: user                # k create secret generic mysql-db-user --from-literal=mysql-db-user=dbadmin        
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mysql-db-password
-                  key: db-password      # k create secret generic mysql-db-password --from-literal=db-password=password123     
+                  key: db-password      # k create secret generic mysql-db-password --from-literal=mysql-db-password=password123     
           livenessProbe:
             exec:
               command: 
