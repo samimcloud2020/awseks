@@ -31,6 +31,7 @@ spec:
             - name: DB_NAME
               value: "usermgmt"            
             - name: DB_USERNAME
+              valueFrom:
                 secretKeyRef:
                   name: mysql-db-password
                   key: db-user                # k create secret generic mysql-db-password --from-literal=db-user=dbadmin   --from-literal=db-password=password123      
