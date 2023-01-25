@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: usermgmt-restapp-service
+  labels: 
+    app: usermgmt-restapp
+spec:
+  type: LoadBalancer
+  selector:
+    app: usermgmt-restapp
+  ports: 
+    - port: 80                # access by host port 80
+      targetPort: 8095        # container port listen on 8095
