@@ -19,7 +19,12 @@ metadata:
     alb.ingress.kubernetes.io/healthy-threshold-count: '2'
     alb.ingress.kubernetes.io/unhealthy-threshold-count: '2'   
 spec:
-  ingressClassName: my-aws-ingress-class   # Ingress Class                       
+  ingressClassName: my-aws-ingress-class   # Ingress Class     
+  defaultBackend:                # defaultBackend help you if says /app4/* its goes to defaultBackend.if any not match then goes to defaultBackend
+    service:
+      name: app1-nginx-nodeport-service
+      port:
+        number: 80                  
   rules:
     - http:
         paths:           
